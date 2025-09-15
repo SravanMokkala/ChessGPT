@@ -26,3 +26,6 @@ def handler(request):
         </html>
         '''
     }
+
+def app(request):
+    return handler(request)
