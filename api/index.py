@@ -1,21 +1,30 @@
 import os
 import json
+from http.server import BaseHTTPRequestHandler
 
-def handler(request):
-    try:
-        # Ultra-simple test - no external dependencies
-        return {
-            'statusCode': 200,
-            'headers': {'Content-Type': 'application/json'},
-            'body': json.dumps({
-                'message': 'ChessGPT API is working!',
-                'api_key_configured': bool(os.environ.get("OPENAI_API_KEY")),
-                'method': request.method if hasattr(request, 'method') else 'unknown'
-            })
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        
+        response_data = {
+            'message': 'ChessGPT API is working!',
+            'api_key_configured': bool(os.environ.get("OPENAI_API_KEY")),
+            'method': 'GET'
         }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json'},
-            'body': json.dumps({'error': str(e)})
+        
+        self.wfile.write(json.dumps(response_data).encode())
+    
+    def do_POST(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        
+        response_data = {
+            'message': 'ChessGPT API is working!',
+            'api_key_configured': bool(os.environ.get("OPENAI_API_KEY")),
+            'method': 'POST'
         }
+        
+        self.wfile.write(json.dumps(response_data).encode())
