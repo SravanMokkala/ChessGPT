@@ -80,3 +80,4 @@ This application uses a clean, focused architecture:
 - **Standardized Prompt**: Consistent, comprehensive game analysis using carefully crafted system prompts
 
 The system prompt ensures the AI provides structured, educational analysis that helps players improve their understanding of chess games.
+# Force new deployment
