@@ -1,2 +1,3 @@
-python-dotenv
-openai
+# Minimal requirements for Vercel
+# python-dotenv
+# openai
